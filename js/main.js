@@ -1,6 +1,42 @@
 "use strict";
 
+// var system = new particleSystem({ canvas_id: "ar-particle-area" });
+// system.start();
+
 const canvas = document.getElementsByTagName("canvas")[0];
+
+function handleCanvasMouseEvent(e) {
+  if (e.clientX <= canvas.offsetWidth && e.clientY <= canvas.offsetHeight) {
+    e.stopPropagation();
+    var newEvent = new MouseEvent("mousemove", {
+      canBubbleArg: true,
+      cancelableArg: true,
+      viewArg: Window,
+      detailArg: 0,
+      screenX: e.screenX,
+      screenY: e.screenY,
+      clientX: e.clientX,
+      clientY: e.clientY,
+      ctrlKeyArg: false,
+      altKeyArg: false,
+      shiftKeyArg: false,
+      metaKeyArg: false,
+      buttonArg: 0,
+      relatedTargetArg: null,
+    });
+    canvas.dispatchEvent(newEvent);
+  }
+}
+
+const mouseEvents = document.getElementsByClassName("handle-mouse-event");
+
+console.log(mouseEvents);
+for (let i = 0; i < mouseEvents.length; i++) {
+  mouseEvents[i].addEventListener("mousemove", (e) => {
+    handleCanvasMouseEvent(e);
+  });
+}
+
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
@@ -12,8 +48,8 @@ let config = {
   PRESSURE_DISSIPATION: 0,
   PRESSURE_ITERATIONS: 25,
   CURL: 2,
-  SPLAT_RADIUS: 0.001,
-  SPLAT_FORCE: 10,
+  SPLAT_RADIUS: 0.00015,
+  SPLAT_FORCE: 90,
   SHADING: true,
   //COLORFUL: true,
   //COLOR_UPDATE_SPEED: 10,
@@ -110,7 +146,7 @@ function supportRenderTextureFormat(gl, internalFormat, format, type) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, 4, 4, 0, format, type, null);
+  gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, 1, 1, 0, format, type, null);
 
   let fbo = gl.createFramebuffer();
   gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
@@ -726,7 +762,6 @@ function update() {
   displayProgram.bind();
   gl.uniform1i(displayProgram.uniforms.uTexture, density.read[2]);
   blit(null);
-
   requestAnimationFrame(update);
 }
 
@@ -743,7 +778,6 @@ function splat(x, y, dx, dy, color) {
   gl.uniform1f(splatProgram.uniforms.radius, config.SPLAT_RADIUS);
   blit(velocity.write[1]);
   velocity.swap();
-
   gl.uniform1i(splatProgram.uniforms.uTarget, density.read[2]);
   gl.uniform3f(
     splatProgram.uniforms.color,
@@ -757,7 +791,7 @@ function splat(x, y, dx, dy, color) {
 
 function multipleSplats(amount) {
   for (let i = 0; i < amount; i++) {
-    const color = [Math.random() * 10, Math.random() * 10, Math.random() * 10];
+    const color = [Math.random() * 176, Math.random() * 54, Math.random() * 54];
     const x = canvas.width * Math.random();
     const y = canvas.height * Math.random();
     const dx = 1000 * (Math.random() - 0.5);
@@ -805,9 +839,9 @@ canvas.addEventListener(
 canvas.addEventListener("mousemove", () => {
   pointers[0].down = true;
   pointers[0].color = [
-    Math.random() + 0.2,
-    Math.random() + 0.2,
-    Math.random() + 0.2,
+    Math.random() + 0.9,
+    Math.random() + 0.01,
+    Math.random() + 0.01,
   ];
 });
 
@@ -822,9 +856,9 @@ canvas.addEventListener("touchstart", (e) => {
     pointers[i].x = touches[i].pageX;
     pointers[i].y = touches[i].pageY;
     pointers[i].color = [
-      Math.random() + 0.2,
-      Math.random() + 0.2,
-      Math.random() + 0.2,
+      Math.random() + 0.05,
+      Math.random() + 0.05,
+      Math.random() + 0.05,
     ];
   }
 });
@@ -839,3 +873,161 @@ window.addEventListener("touchend", (e) => {
     for (let j = 0; j < pointers.length; j++)
       if (touches[i].identifier == pointers[j].id) pointers[j].down = false;
 });
+
+let work = [
+  {
+    title: "Saemushi Software Pvt. Ltd.",
+    desc: "Designed and developed offical wesite for the Saemushi Software. It's an Indian Non-Government Company and majorly into providing Business Services.",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/saemushi",
+    active: true,
+    link: "https://saemushi.com/",
+  },
+  {
+    title: "WDAUS - We Design As You Say",
+    desc: "It's a official website for the comapany for which me and my friends planned.",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/wdaus",
+    active: true,
+    link: "http://wdaus.azurewebsites.net/",
+  },
+  {
+    title: "Audio data capture",
+    desc: "An audio capture application which is used to train the ML models to improve the accuracy.",
+    tools: ["JavaScript", "React", "Nest", "MongoBD"],
+    imgPath: "./assets/images/work/websites/voice",
+    active: true,
+    link: "https://voice.faceopen.com/",
+  },
+  {
+    title: "TRA-ERF",
+    desc: "Designed and developed the official website for T R Anantharaman Education and Research Foundation. This Foundation has been specifically set up to build upon his memorable work and is dedicated to the enhancement of knowledge skills of students.",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/tra",
+    active: true,
+    link: "https://voice.faceopen.com/",
+  },
+  {
+    title: "Schools Hub",
+    desc: "Students management system. Ensures schools keep track of student data in a safe, reliable way.",
+    tools: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/schoolshub_admin",
+    active: true,
+    link: "https://schoolshub.azurewebsites.net/login/index.html",
+  },
+  {
+    title: "Feecorner",
+    desc: "An web portal for students to pay the examination fee.",
+    tools: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/feecorner",
+    active: true,
+    link: "https://feecorner.azurewebsites.net/",
+  },
+  {
+    title: "Tamsa Events",
+    desc: "We are Service Provider of Events Service, Event Management Services, Exhibition Service, etc.",
+    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
+    imgPath: "./assets/images/work/websites/tamsa",
+    active: false,
+  },
+  {
+    title: "GRIET - Gemz",
+    desc: "GRIET e-Magazine (GeM) is an e-nitiative taken by Gokaraju Rangaraju Instittute of Engineering and Technology(GRIET) to encourage e-culture among its students.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/gemz",
+    active: false,
+  },
+  {
+    title: "GRIET - Pragnya",
+    desc: "The Annual Technical Fest of GRIET.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/pragnya",
+    active: false,
+  },
+  {
+    title: "GRIET - IEEE",
+    desc: "IEEE GRIET SB | Official Website of IEEE GRIET Student Branch.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/ieee",
+    active: false,
+  },
+  {
+    title: "GRIET - MBA",
+    desc: "Official website for MBA of GRIET.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/gemz",
+    active: false,
+  },
+  {
+    title: "Proyoung FZC",
+    desc: "Official website for Health & Nutrition company Proyoung Nutritional FZC",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/fzc",
+    active: false,
+  },
+  {
+    title: "Proyoung International",
+    desc: "Dashboard for Proyoung's MLM",
+    tools: ["JavaScript", "PHP", "MySQL", "jQuery"],
+    imgPath: "./assets/images/work/websites/fzc",
+    active: false,
+  },
+  {
+    title: "BQuiz",
+    desc: "Web based online examination portal for visually impaired people. Which used web speech and speech synthesis APIs",
+    tools: ["SpeechSynthesis", "Web Speech", "JavaScript", "PHP", "MySQL"],
+    imgPath: "./assets/images/work/websites/bquiz",
+    active: false,
+  },
+  {
+    title: "Govt. Polytechnic College",
+    desc: "Official website of Repalle's Government College",
+    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
+    imgPath: "./assets/images/work/websites/poly",
+    active: false,
+  },
+];
+
+let workHTMLContent = "";
+
+work.forEach((item, index) => {
+  workHTMLContent += `
+    <div class="ar-card">
+    <div class="ar-card-overlay" id="card${index}"></div>
+    <div class="ar-card-head">
+      <svg
+        class="ar-card-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+        <path
+          d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"
+        />
+      </svg>
+    </div>
+    <div class="ar-card-body">
+      <div class="ar-title-with-status">
+        <h5>${item.title}</h5>
+        <div class="ar-status ${
+          item.active ? "ar-active" : "ar-inactive"
+        }"></div>
+      </div>
+      <p>
+        ${item.desc}
+      </p>
+    </div>
+    <div class="ar-card-footer">
+      <ul>
+        ${item.tools?.map((tool) => `<li>${tool}</li>`).join("")}
+      </ul>
+    </div>
+    </div>
+    `;
+  setTimeout(() => {
+    document.getElementById(
+      `card${index}`
+    ).style.backgroundImage = `url(${item.imgPath}.jpg)`;
+  }, 0);
+});
+document.getElementById("arWorkBody").innerHTML = workHTMLContent;
