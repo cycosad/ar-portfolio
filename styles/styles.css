@@ -37,6 +37,7 @@ h3 {
 
 h4 {
     font-size: 1.75rem;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 h5 {
@@ -99,11 +100,6 @@ img {
     z-index: 0;
 }
 
-.global-padding {
-    padding-left: 5rem;
-    padding-right: 5rem;
-}
-
 .bottom-spacing {
     padding-bottom: 5rem;
 }
@@ -112,6 +108,10 @@ img {
     position: relative;
     scroll-snap-align: start;
 }
+
+/* ---------------------------------*/
+/*              Home                */
+/*----------------------------------*/
 
 .ar-intro {
     display: flex;
@@ -169,7 +169,6 @@ a:hover {
 .ar-menu li {
     list-style: none;
     display: inline-block;
-    padding: 1rem 2rem;
 }
 
 .ar-menu li a {
@@ -199,18 +198,21 @@ a:hover {
     position: absolute;
     letter-spacing: 0.75rem;
     font-weight: 300;
-    top: 50%;
-    transform: translateY(-50%);
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.5);
+    display: flex;
 }
 
-.ar-text-right {
-    left: 350px;
+.ar-text-right span {
+    opacity: 0;
+    animation: moveleft 2s ease-in-out 1s forwards;
+    animation-delay: calc(.1s * var(--i))
 }
 
-.ar-text-left {
-    left: -225px;
+.ar-text-left span {
+    opacity: 0;
+    animation: moveright 2s ease-in-out 1s forwards;
+    animation-delay: calc(.1s * var(--i))
 }
 
 .ar-social {
@@ -298,7 +300,7 @@ a:hover {
 }
 
 .grow {
-    animation: grow 2s ease-in-out;
+    animation: grow 1s ease-in-out;
 }
 
 @keyframes grow {
@@ -315,9 +317,36 @@ a:hover {
     }
 }
 
-.ar-freelance h6 {
-    text-align: right;
-    margin-left: auto;
+@keyframes moveright {
+    0% {
+        transform: translateX(-100px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateX(25px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveleft {
+    0% {
+        transform: translateX(100px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateX(-25px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 #ar-particle-area {
@@ -326,8 +355,6 @@ a:hover {
 }
 
 .title {
-    font-size: 10rem;
-    margin-bottom: 2rem;
     font-weight: 300;
     text-transform: uppercase;
     background: -webkit-linear-gradient(#FF3273, #F4663F);
@@ -350,14 +377,6 @@ a:hover {
     line-height: 2;
 }
 
-.ar-about-left {
-    flex-basis: 45%;
-}
-
-.ar-about-right {
-    flex-basis: 40%;
-}
-
 .profile {
     width: 100px;
     margin-bottom: 2rem;
@@ -372,6 +391,75 @@ a:hover {
     border-radius: 25px;
     border: 0;
     color: #fff;
+}
+
+/* -----------------------------*/
+/*           Journey            */
+/*------------------------------*/
+
+.ar-journey {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.ar-entries:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    transform: translateX(-50%);
+    width: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ar-entries {
+    margin: auto;
+    position: relative;
+    left: -5px;
+}
+
+.ar-entry {
+    padding: 30px 20px;
+    clear: both;
+}
+
+.ar-entry:not(:first-child) {
+    margin-top: -60px;
+}
+
+.ar-entry:nth-child(2n) {
+    text-align: left;
+    float: right;
+}
+
+.ar-entry-title {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.ar-entry-title:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(#FF3273, #F4663F);
+    background-color: #000;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.ar-entry-body {
+    color: #aaa;
+}
+
+.ar-entry-body p {
+    line-height: 1.4em;
 }
 
 /* -----------------------------*/
@@ -390,7 +478,6 @@ a:hover {
 }
 
 .ar-work-body>div {
-    width: 32%;
     min-height: 250px;
     margin-bottom: 2rem;
 }
@@ -499,8 +586,24 @@ a:hover {
 }
 
 .ar-card-head {
-    display: flex;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ar-card-head .visit {
+    width: 20px;
+    fill: rgba(176, 54, 54);
+}
+
+.ar-card .ar-card-year {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.1;
+    font-size: 5rem;
+    line-height: 1;
 }
 
 .ar-card-head,
@@ -523,9 +626,6 @@ a:hover {
 .ar-card-icon {
     width: 25px;
     fill: rgba(176, 54, 54);
-    background: -webkit-linear-gradient(#FF3273, #F4663F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .ar-card ul {
@@ -566,3 +666,149 @@ a:hover {
     background-color: #343434;
     padding: 1rem 2rem;
 } */
+
+/* ---------------------------------*/
+/*              Mobile              */
+/*----------------------------------*/
+
+@media only screen and (max-width: 768px) {}
+
+@media only screen and (max-width: 768px) {
+    .ar-text-left {
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .ar-text-right {
+        bottom: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .global-padding {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .ar-info {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .ar-freelance h6 {
+        text-align: center;
+        margin-bottom: 5%;
+    }
+
+    .ar-freelance a {
+        display: block;
+    }
+
+    .ar-about-left {
+        flex-basis: 100%;
+    }
+
+    .ar-about-right {
+        flex-basis: 100%;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        margin-top: 3rem;
+    }
+
+    .ar-work-body>div {
+        width: 100%;
+    }
+
+    .ar-menu li {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .ar-entries:before {
+        left: 10%;
+    }
+
+    .ar-entry {
+        float: right;
+        text-align: left;
+        width: calc(100% - 40px);
+        margin-bottom: 2rem;
+    }
+
+    .ar-entry-title:before {
+        left: -34px;
+    }
+
+    .ar-entry:nth-child(2n) .ar-entry-title:before {
+        left: -34px;
+    }
+
+}
+
+@media only screen and (min-width: 769px) {
+    .ar-intro-body h1 {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .ar-text-left {
+        left: -225px;
+    }
+
+    .ar-text-right {
+        left: 350px;
+    }
+
+    .global-padding {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    .ar-freelance h6 {
+        text-align: right;
+        margin-left: auto;
+    }
+
+    .ar-about-left {
+        flex-basis: 45%;
+    }
+
+    .ar-about-right {
+        flex-basis: 40%;
+    }
+
+    .title {
+        font-size: 7rem;
+        margin: 2rem 0;
+    }
+
+    .ar-work-body>div {
+        width: 32%;
+    }
+
+    .ar-menu li {
+        padding: 1rem 2rem;
+    }
+
+    .ar-entries:before {
+        left: 50%;
+    }
+
+    .ar-entry {
+        float: left;
+        text-align: right;
+        width: calc(50% - 80px);
+    }
+
+    .ar-entry-title:before {
+        right: -108px;
+    }
+
+    .ar-entry:nth-child(2n) .ar-entry-title:before {
+        left: -108px;
+    }
+}

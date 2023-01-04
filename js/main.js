@@ -876,12 +876,62 @@ window.addEventListener("touchend", (e) => {
 
 let work = [
   {
+    title: "AR Project",
+    desc: "In Progress",
+    tools: ["JavaScript", "VR", "WebXR"],
+    imgPath: "./assets/images/work/websites/ar",
+    active: false,
+    year: 2023,
+  },
+  {
+    title: "Audio data capture",
+    desc: "An audio capture application which is used to train the ML models to improve the accuracy of word detection.",
+    tools: ["JavaScript", "React", "Nest", "MongoBD"],
+    imgPath: "./assets/images/work/websites/voice",
+    active: true,
+    link: "https://voice.faceopen.com/",
+    year: 2020,
+  },
+  {
     title: "Saemushi Software Pvt. Ltd.",
     desc: "Designed and developed offical wesite for the Saemushi Software. It's an Indian Non-Government Company and majorly into providing Business Services.",
     tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
     imgPath: "./assets/images/work/websites/saemushi",
     active: true,
     link: "https://saemushi.com/",
+    year: 2018,
+  },
+  {
+    title: "Tamsa Events",
+    desc: "We are Service Provider of Events Service, Event Management Services, Exhibition Service, etc.",
+    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
+    imgPath: "./assets/images/work/websites/tamsa",
+    active: false,
+    year: 2018,
+  },
+  {
+    title: "Proyoung FZC",
+    desc: "Official website for Health & Nutrition company Proyoung Nutritional FZC",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/fzc",
+    active: false,
+    year: 2018,
+  },
+  {
+    title: "Proyoung International",
+    desc: "Dashboard for Proyoung's MLM",
+    tools: ["JavaScript", "PHP", "MySQL", "jQuery"],
+    imgPath: "./assets/images/work/websites/fzc",
+    active: false,
+    year: 2018,
+  },
+  {
+    title: "Govt. Polytechnic College",
+    desc: "Official website of Repalle's Government College",
+    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
+    imgPath: "./assets/images/work/websites/poly",
+    active: false,
+    year: 2018,
   },
   {
     title: "WDAUS - We Design As You Say",
@@ -890,22 +940,7 @@ let work = [
     imgPath: "./assets/images/work/websites/wdaus",
     active: true,
     link: "http://wdaus.azurewebsites.net/",
-  },
-  {
-    title: "Audio data capture",
-    desc: "An audio capture application which is used to train the ML models to improve the accuracy.",
-    tools: ["JavaScript", "React", "Nest", "MongoBD"],
-    imgPath: "./assets/images/work/websites/voice",
-    active: true,
-    link: "https://voice.faceopen.com/",
-  },
-  {
-    title: "TRA-ERF",
-    desc: "Designed and developed the official website for T R Anantharaman Education and Research Foundation. This Foundation has been specifically set up to build upon his memorable work and is dedicated to the enhancement of knowledge skills of students.",
-    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-    imgPath: "./assets/images/work/websites/tra",
-    active: true,
-    link: "https://voice.faceopen.com/",
+    year: 2017,
   },
   {
     title: "Schools Hub",
@@ -914,6 +949,7 @@ let work = [
     imgPath: "./assets/images/work/websites/schoolshub_admin",
     active: true,
     link: "https://schoolshub.azurewebsites.net/login/index.html",
+    year: 2017,
   },
   {
     title: "Feecorner",
@@ -922,55 +958,7 @@ let work = [
     imgPath: "./assets/images/work/websites/feecorner",
     active: true,
     link: "https://feecorner.azurewebsites.net/",
-  },
-  {
-    title: "Tamsa Events",
-    desc: "We are Service Provider of Events Service, Event Management Services, Exhibition Service, etc.",
-    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
-    imgPath: "./assets/images/work/websites/tamsa",
-    active: false,
-  },
-  {
-    title: "GRIET - Gemz",
-    desc: "GRIET e-Magazine (GeM) is an e-nitiative taken by Gokaraju Rangaraju Instittute of Engineering and Technology(GRIET) to encourage e-culture among its students.",
-    tools: ["Wordpress", "Dreamhost"],
-    imgPath: "./assets/images/work/websites/gemz",
-    active: false,
-  },
-  {
-    title: "GRIET - Pragnya",
-    desc: "The Annual Technical Fest of GRIET.",
-    tools: ["Wordpress", "Dreamhost"],
-    imgPath: "./assets/images/work/websites/pragnya",
-    active: false,
-  },
-  {
-    title: "GRIET - IEEE",
-    desc: "IEEE GRIET SB | Official Website of IEEE GRIET Student Branch.",
-    tools: ["Wordpress", "Dreamhost"],
-    imgPath: "./assets/images/work/websites/ieee",
-    active: false,
-  },
-  {
-    title: "GRIET - MBA",
-    desc: "Official website for MBA of GRIET.",
-    tools: ["Wordpress", "Dreamhost"],
-    imgPath: "./assets/images/work/websites/gemz",
-    active: false,
-  },
-  {
-    title: "Proyoung FZC",
-    desc: "Official website for Health & Nutrition company Proyoung Nutritional FZC",
-    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-    imgPath: "./assets/images/work/websites/fzc",
-    active: false,
-  },
-  {
-    title: "Proyoung International",
-    desc: "Dashboard for Proyoung's MLM",
-    tools: ["JavaScript", "PHP", "MySQL", "jQuery"],
-    imgPath: "./assets/images/work/websites/fzc",
-    active: false,
+    year: 2017,
   },
   {
     title: "BQuiz",
@@ -978,13 +966,48 @@ let work = [
     tools: ["SpeechSynthesis", "Web Speech", "JavaScript", "PHP", "MySQL"],
     imgPath: "./assets/images/work/websites/bquiz",
     active: false,
+    year: 2017,
   },
   {
-    title: "Govt. Polytechnic College",
-    desc: "Official website of Repalle's Government College",
-    tools: ["HTML", "CSS", "JavaScript", "jQuery"],
-    imgPath: "./assets/images/work/websites/poly",
+    title: "TRA-ERF",
+    desc: "Designed and developed the official website for T R Anantharaman Education and Research Foundation. This Foundation has been specifically set up to build upon his memorable work and is dedicated to the enhancement of knowledge skills of students.",
+    tools: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    imgPath: "./assets/images/work/websites/tra",
+    active: true,
+    link: "http://tra-erf.org/",
+    year: 2016,
+  },
+  {
+    title: "GRIET - IEEE",
+    desc: "IEEE GRIET SB | Official Website of IEEE GRIET Student Branch.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/ieee",
     active: false,
+    year: 2016,
+  },
+  {
+    title: "GRIET - MBA",
+    desc: "Official website for MBA of GRIET.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/gemz",
+    active: false,
+    year: 2015,
+  },
+  {
+    title: "GRIET - Pragnya",
+    desc: "The Annual Technical Fest of GRIET.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/pragnya",
+    active: false,
+    year: 2015,
+  },
+  {
+    title: "GRIET - Gemz",
+    desc: "GRIET e-Magazine (GeM) is an e-nitiative taken by Gokaraju Rangaraju Instittute of Engineering and Technology(GRIET) to encourage e-culture among its students.",
+    tools: ["Wordpress", "Dreamhost"],
+    imgPath: "./assets/images/work/websites/gemz",
+    active: false,
+    year: 2015,
   },
 ];
 
@@ -995,16 +1018,23 @@ work.forEach((item, index) => {
     <div class="ar-card">
     <div class="ar-card-overlay" id="card${index}"></div>
     <div class="ar-card-head">
-      <svg
-        class="ar-card-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-      >
-        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <path
-          d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"
-        />
-      </svg>
+    <svg
+      class="ar-card-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"
+      />
+    </svg>
+      ${
+        item.active
+          ? `<a href=${item.link} target="_blank">
+          <svg class="visit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+        </a>`
+          : `<span></span>`
+      }
     </div>
     <div class="ar-card-body">
       <div class="ar-title-with-status">
@@ -1022,6 +1052,7 @@ work.forEach((item, index) => {
         ${item.tools?.map((tool) => `<li>${tool}</li>`).join("")}
       </ul>
     </div>
+    <div class="ar-card-year">${item.year}</div>
     </div>
     `;
   setTimeout(() => {
